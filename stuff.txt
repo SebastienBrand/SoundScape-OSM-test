@@ -1,1 +1,17 @@
+# how to turn osm into geojson
 
+#have ogr2ogr - get that through gdal - which u get through brew
+#made of 5 parts
+# points
+# lines
+# multilinestring
+# multipolygons
+# other_relations
+
+ogr2ogr -f GeoJSON map1.geojson map.osm points
+ogr2ogr -f GeoJSON map2.geojson map.osm lines
+ogr2ogr -f GeoJSON map3.geojson map.osm multilinestring
+ogr2ogr -f GeoJSON map4.geojson map.osm multipolygons
+ogr2ogr -f GeoJSON map5.geojson map.osm other_relations
+
+#fuse them all into 1

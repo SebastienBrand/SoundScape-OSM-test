@@ -1,6 +1,8 @@
 # how to turn osm into geojson
 
 #have ogr2ogr - get that through gdal - which u get through brew
+# also this thing to make them 1 file
+#npm install -g geojson-merge
 #made of 5 parts
 # points
 # lines
@@ -14,4 +16,8 @@ ogr2ogr -f GeoJSON map3.geojson map.osm multilinestring
 ogr2ogr -f GeoJSON map4.geojson map.osm multipolygons
 ogr2ogr -f GeoJSON map5.geojson map.osm other_relations
 
-#fuse them all into 1
+geojson-merge map1.geojson map2.geojson > A.geojson
+geojson-merge map3.geojson map4.geojson > B.geojson
+geojson-merge A.geojson B.geojson > C.geojson
+geojson-merge C.geojson map5.geojson > full.geojson
+#fusing them all into 1 file, called full.geojson that has roads, markers everything from osm
